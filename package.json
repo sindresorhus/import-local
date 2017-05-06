@@ -19,7 +19,8 @@
     "test": "xo && ava"
   },
   "files": [
-    "index.js"
+    "index.js",
+    "fixtures/cli.js"
   ],
   "keywords": [
     "import",
