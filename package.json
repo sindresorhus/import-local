@@ -33,6 +33,7 @@
 		"cli"
 	],
 	"dependencies": {
+		"find-up": "^3.0.0",
 		"pkg-dir": "^4.2.0",
 		"resolve-cwd": "^3.0.0"
 	},
