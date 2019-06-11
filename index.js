@@ -13,5 +13,5 @@ module.exports = filename => {
 	// because __filename's case is inconsistent on Windows
 	// Can use `===` when targeting Node.js 8
 	// See https://github.com/nodejs/node/issues/6624
-	return localFile && path.relative(localFile, filename) !== '' ? require(localFile) : null;
+	return localFile && path.relative(localFile, filename) !== '' && require(localFile);
 };
