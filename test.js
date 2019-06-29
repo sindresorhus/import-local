@@ -36,3 +36,19 @@ test('global', async t => {
 	t.is(stdout, '');
 });
 
+test('treats aliased package as local installation', async t => {
+	await cpy(
+		['package.json', 'index.js'],
+		path.join(__dirname, 'fixtures/yarn-alias/node_modules/import-local'),
+		{parents: true}
+	);
+	const {stdout} = await execa(
+		'node',
+		[path.join(__dirname, 'fixtures/yarn-alias/index.js')],
+		{
+			preferLocal: false,
+			cwd: path.join(__dirname, 'fixtures/yarn-alias')
+		}
+	);
+	t.is(stdout, '');
+});
