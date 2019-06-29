@@ -9,7 +9,7 @@ module.exports = filename => {
 	const relativePath = path.relative(globalDir, filename);
 	const pkg = require(path.join(globalDir, 'package.json'));
 	const localFile = resolveCwd.silent(path.join(pkg.name, relativePath));
-	const filenameIsLocal = findUp.sync(path.join(process.cwd(), 'node_modules'), {cwd: globalDir}) !== null;
+	const filenameIsLocal = findUp.sync(path.join(process.cwd(), 'node_modules'), {cwd: globalDir, type: 'directory'}) !== undefined;
 
 	return localFile && !filenameIsLocal && require(localFile);
 };
