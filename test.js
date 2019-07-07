@@ -28,6 +28,26 @@ test('local', async t => {
 	await del(path.join(__dirname, 'fixtures/local/node_modules'));
 });
 
+test('invoking global prefers local', async t => {
+	await cpy(
+		['package.json', 'index.js'],
+		path.join(__dirname, 'fixtures/prefer-local/node_modules/import-local'),
+		{parents: true}
+	);
+
+	const {stdout} = await execa(
+		'node',
+		[path.join(__dirname, 'fixtures/prefer-local/cli.js')],
+		{
+			preferLocal: false,
+			cwd: path.join(__dirname, 'fixtures/prefer-local/nested')
+		}
+	);
+	t.is(stdout, 'local');
+
+	await del(path.join(__dirname, 'fixtures/prefer-local/node_modules'));
+});
+
 test('global', async t => {
 	const {stdout} = await execa('import-local-fixture', {
 		preferLocal: false,
