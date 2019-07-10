@@ -11,5 +11,9 @@ module.exports = filename => {
 	const localNodeModules = path.join(process.cwd(), 'node_modules');
 	const filenameInLocalNodeModules = !path.relative(localNodeModules, filename).startsWith('..');
 
-	return !filenameInLocalNodeModules && localFile && require(localFile);
+	// Use `path.relative()` to detect local package installation,
+	// because __filename's case is inconsistent on Windows
+	// Can use `===` when targeting Node.js 8
+	// See https://github.com/nodejs/node/issues/6624
+	return !filenameInLocalNodeModules && localFile && path.relative(localFile, filename) !== '' && require(localFile);
 };
