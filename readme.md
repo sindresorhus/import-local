@@ -1,4 +1,4 @@
-# import-local [![Build Status](https://travis-ci.org/sindresorhus/import-local.svg?branch=master)](https://travis-ci.org/sindresorhus/import-local)
+# import-local
 
 > Let a globally installed package use a locally installed version of itself if available
 
