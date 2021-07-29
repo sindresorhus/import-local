@@ -2,6 +2,7 @@
 const path = require('path');
 const resolveCwd = require('resolve-cwd');
 const pkgDir = require('pkg-dir');
+const os = require('os')
 
 module.exports = filename => {
 	const globalDir = pkgDir.sync(path.dirname(filename));
