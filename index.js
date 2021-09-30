@@ -9,7 +9,7 @@ module.exports = filename => {
 	const pkg = require(path.join(globalDir, 'package.json'));
 	const localFile = resolveCwd.silent(path.join(pkg.name, relativePath));
 	const localNodeModules = path.join(process.cwd(), 'node_modules');
-	const filenameInLocalNodeModules = !path.relative(localNodeModules, filename).startsWith('..');
+	const filenameInLocalNodeModules = !path.relative(localNodeModules, filename).startsWith('..') && localNodeModules.charAt(0) === filename.charAt(0);
 
 	// Use `path.relative()` to detect local package installation,
 	// because __filename's case is inconsistent on Windows
