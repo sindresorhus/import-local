@@ -9,11 +9,10 @@ module.exports = filename => {
 	const pkg = require(path.join(globalDir, 'package.json'));
 	const localFile = resolveCwd.silent(path.join(pkg.name, relativePath));
 	const localNodeModules = path.join(process.cwd(), 'node_modules');
-	// In windows system, if localNodeModules and filename are in different partitions,
-	// path.relative() returns the value of filename and filenameInLocalNodeModules gets true.
-	// filenameInLocalNodeModules should be false.
-	// Adding a condition that compares the root of two variables will solve this problem.
-	const filenameInLocalNodeModules = !path.relative(localNodeModules, filename).startsWith('..') && path.parse(localNodeModules).root === path.parse(filename).root;
+
+	const filenameInLocalNodeModules = !path.relative(localNodeModules, filename).startsWith('..')
+		// On Windows, if `localNodeModules` and `filename` are on different partitions, `path.relative()` returns the value of `filename`, resulting in `filenameInLocalNodeModules` incorrectly becoming `true`.
+		&& path.parse(localNodeModules).root === path.parse(filename).root;
 
 	// Use `path.relative()` to detect local package installation,
 	// because __filename's case is inconsistent on Windows
