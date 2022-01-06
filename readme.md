@@ -24,6 +24,8 @@ if (importLocal(__filename)) {
 }
 ```
 
+You can also pass in `import.meta.url`.
+
 
 ---
 
