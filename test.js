@@ -4,14 +4,6 @@ import execa from 'execa';
 import cpy from 'cpy';
 import del from 'del';
 
-test.before(async () => {
-	await execa('npm', ['link']);
-});
-
-test.after(async () => {
-	await execa('npm', ['unlink']);
-});
-
 test('local', async t => {
 	await cpy(
 		['package.json', 'index.js', 'fixtures/cli.js'],
