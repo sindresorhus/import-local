@@ -23,7 +23,8 @@ if (importLocal(__filename)) {
 	// Code for both global and local version here…
 }
 ```
-> `import.mate.url` is supported when using ES module
+
+You can also pass in `import.meta.url`.
 
 
 ---
