@@ -1,2 +1,1 @@
-declare function importLocal(__filename: string): boolean | undefined | unknown;
-export = importLocal;
+export default function importLocal(__filename: string): boolean | undefined | unknown;
