@@ -1,10 +1,10 @@
 /**
-Let a globally installed package use a locally installed version of itself if available
+Let a globally installed package use a locally installed version of itself if available.
 
-@param __filename - The name of the package.
+@param filePath - The absolute file path to the main file of the package.
 
 @example
-```js
+```
 import importLocal from 'import-local';
 
 if (importLocal(import.meta.url)) {
@@ -14,4 +14,4 @@ if (importLocal(import.meta.url)) {
 }
 ```
 */
-export default function importLocal(__filename: string): boolean | undefined | unknown;
+export default function importLocal(filePath: string): boolean | undefined | unknown;
