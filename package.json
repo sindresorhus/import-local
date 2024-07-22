@@ -17,7 +17,7 @@
 		"node": ">=8"
 	},
 	"scripts": {
-		"test": "xo && ava && tsd"
+		"test": "xo && ava"
 	},
 	"files": [
 		"index.js",
@@ -43,7 +43,6 @@
 		"cpy": "^7.0.1",
 		"del": "^4.1.1",
 		"execa": "^2.0.1",
-		"tsd": "^0.31.1",
 		"xo": "^0.24.0"
 	},
 	"xo": {
